@@ -8,8 +8,8 @@ import cv2 as cv
 
 def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1'):
     src = cv.imread(route)
-    cv.namedWindow("prueba1", cv.WINDOW_AUTOSIZE)
-    cv.imshow("prueba1", src)
+    cv.namedWindow(window_name, cv.WINDOW_AUTOSIZE)
+    cv.imshow(window_name, src)
     cv.waitKey(0)
     return src
 
