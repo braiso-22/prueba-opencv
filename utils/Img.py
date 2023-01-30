@@ -55,3 +55,10 @@ def separar_luv(image):
 
 def unir_colores(red, green, blue):
     return cv.merge([blue, green, red])
+
+
+def escala_grises(img):
+    grises = cv.cvtColor(img, cv.COLOR_RGB2GRAY)
+    plt.imshow(grises, cmap='gray')
+    plt.show()
+    return grises
