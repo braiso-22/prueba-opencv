@@ -10,7 +10,7 @@ from utils import Img
 def main():
     image = Img.cargar_imagen()
     Img.print_image_info(image)
-    red, green, blue = Img.separar_colores(image)
+    red, green, blue = Img.separar_rgb(image)
     image = Img.unir_colores(red, green, blue)
     plt.imshow(image)
     plt.show()
