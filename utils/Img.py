@@ -62,3 +62,43 @@ def escala_grises(img):
     plt.imshow(grises, cmap='gray')
     plt.show()
     return grises
+
+
+def ver_todos_los_grises(img):
+    r, g, b = separar_rgb(img)
+    h, s, v = separar_hsv(img)
+    l, u, v = separar_luv(img)
+
+
+def restar_imagenes(img, img2):
+    """
+    Resta con saturación
+    :param img:
+    :param img2:
+    :return:
+    """
+    resta = cv.subtract(img, img2)
+    plt.imshow(resta, cmap='gray')
+    plt.show()
+    return resta
+
+
+def sumar_imagenes(img, img2):
+    suma = cv.add(img, img2)
+    plt.imshow(suma, cmap="gray")
+    plt.show()
+    return suma
+
+
+def multiplicar_imagenes(img, img2):
+    multiplicacion = cv.multiply(img, img2)
+    plt.imshow(multiplicacion, cmap="gray")
+    plt.show()
+    return multiplicacion
+
+
+def dividir_imanenes(img, img2):
+    division = cv.divide(img, img2)
+    plt.imshow(division, cmap="gray")
+    plt.show()
+    return division
