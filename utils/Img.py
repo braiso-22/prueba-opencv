@@ -123,3 +123,12 @@ def binarizar(img, media):
     img[img < media] = 0
     img[img >= media] = 255
     return img
+
+
+def normalizar_entre_01(img):
+    img_array = np.float32(img)
+    dst = np.zeros(img_array.shape, dtype=np.float32)
+    normalizado = cv.normalize(img_array, dst=dst, alpha=1, beta=0, norm_type=cv.NORM_INF)
+    # si se quisiera mostrar multiplicar por 255 para que se vea bien
+    # plt.imshow(nrm*255, cmap="gray", vmin = 0, vmax=255)
+    return normalizado

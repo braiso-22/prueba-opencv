@@ -1,6 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 import cv2 as cv
+import numpy as np
 
 from utils import Img
 
@@ -107,6 +108,10 @@ def main():
     chica_gris = Img.escala_grises(chica)
     chica_bn = Img.binarizar(chica_gris, media)
     Img.mostrar(chica_bn, gris=True)
+    normalizado = Img.normalizar_entre_01(chica)
+    print("Normalizado")
+    ver_propiedades_minmax(normalizado)
+    ver_media_desviacion(normalizado)
 
 
 if __name__ == '__main__':
