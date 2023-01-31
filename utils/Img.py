@@ -3,11 +3,12 @@ from matplotlib import pyplot as plt
 import cv2 as cv
 
 
-def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1'):
+def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1', mostrar=False):
     src = cv.imread(route)
-    cv.namedWindow(window_name, cv.WINDOW_AUTOSIZE)
-    cv.imshow(window_name, src)
-    cv.waitKey(0)
+    if mostrar:
+        cv.namedWindow(window_name, cv.WINDOW_AUTOSIZE)
+        cv.imshow(window_name, src)
+        cv.waitKey(0)
     return src
 
 
