@@ -24,7 +24,6 @@ def show_3_gray(one, two, three):
     eje1.imshow(one, cmap="gray", vmin=0, vmax=255)
     eje2.imshow(two, cmap="gray")
     eje3.imshow(three, cmap="gray")
-
     plt.show()
 
 
@@ -58,10 +57,10 @@ def unir_colores(red, green, blue):
     return cv.merge([blue, green, red])
 
 
-def escala_grises(img):
+def escala_grises(img, mostrar=False):
     grises = cv.cvtColor(img, cv.COLOR_RGB2GRAY)
-    plt.imshow(grises, cmap='gray')
-    plt.show()
+    if mostrar:
+        mostrar(grises, gris=True)
     return grises
 
 
@@ -79,27 +78,48 @@ def restar_imagenes(img, img2):
     :return:
     """
     resta = cv.subtract(img, img2)
-    plt.imshow(resta, cmap='gray')
-    plt.show()
+    mostrar(resta, gris=True)
     return resta
 
 
 def sumar_imagenes(img, img2):
     suma = cv.add(img, img2)
-    plt.imshow(suma, cmap="gray")
-    plt.show()
+    mostrar(suma, gris=True)
     return suma
 
 
 def multiplicar_imagenes(img, img2):
     multiplicacion = cv.multiply(img, img2)
-    plt.imshow(multiplicacion, cmap="gray")
-    plt.show()
+    mostrar(multiplicacion, gris=True)
     return multiplicacion
 
 
 def dividir_imanenes(img, img2):
     division = cv.divide(img, img2)
-    plt.imshow(division, cmap="gray")
-    plt.show()
+    mostrar(division, gris=True)
     return division
+
+
+def ver_cambios_entre(img1, img2):
+    caja1 = escala_grises(
+        img1
+    )
+    caja2 = escala_grises(
+        img2
+    )
+    cambios = cv.bitwise_xor(caja1, caja2)
+    show_3_gray(caja1, caja2, cambios)
+
+
+def mostrar(img, gris=False):
+    if gris:
+        plt.imshow(img, cmap="gray")
+    else:
+        plt.imshow(img)
+    plt.show()
+
+
+def binarizar(img, media):
+    img[img < media] = 0
+    img[img >= media] = 255
+    return img
