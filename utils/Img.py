@@ -119,6 +119,12 @@ def mostrar(img, gris=False):
     plt.show()
 
 
+def mostrar_rgb(img):
+    img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+    plt.imshow(img)
+    plt.show()
+
+
 def binarizar(img, media):
     img[img < media] = 0
     img[img >= media] = 255
