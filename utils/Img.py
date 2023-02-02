@@ -57,9 +57,9 @@ def unir_colores(red, green, blue):
     return cv.merge([blue, green, red])
 
 
-def escala_grises(img, mostrar=False):
+def escala_grises(img, mostrar_var=False):
     grises = cv.cvtColor(img, cv.COLOR_RGB2GRAY)
-    if mostrar:
+    if mostrar_var:
         mostrar(grises, gris=True)
     return grises
 
@@ -138,3 +138,30 @@ def normalizar_entre_01(img):
     # si se quisiera mostrar multiplicar por 255 para que se vea bien
     # plt.imshow(nrm*255, cmap="gray", vmin = 0, vmax=255)
     return normalizado
+
+def mostar_histograma(image: np.ndarray):
+    figura, ejes = plt.subplots(1, 3, figsize=(10, 4))
+    figura.suptitle("Histogramas RBG")
+
+    colores = ["red", "green", "blue"]
+    for i, color in enumerate(colores):
+        histograma = cv.calcHist([image], [i], None, [256], [0, 256])
+        ejes[i].set_title(f"Histograma de {color}")
+        ejes[i].plot(histograma, color=color)
+    plt.show()
+
+
+def histograma_equalized(image: np.ndarray):
+    figura, ejes = plt.subplots(1, 3, figsize=(10, 4))
+    figura.suptitle("Histogramas RBG ecualizados")
+
+    equalizadas = []
+    colores = ["red", "green", "blue"]
+    for i, color in enumerate(colores):
+        equalization = cv.equalizeHist(image[:, :, i])
+        equalizadas.append(equalization)
+        histograma = cv.calcHist([equalization], [0], None, [256], [0, 256])
+        ejes[i].set_title(f"Histograma de {color}")
+        ejes[i].plot(histograma, color=color)
+    plt.show()
+    return equalizadas[0], equalizadas[1], equalizadas[2]
