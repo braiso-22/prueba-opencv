@@ -187,12 +187,12 @@ def realzar(image):
 def mostrar_varios_rgb(*imagenes: np.ndarray):
     largo = len(imagenes)
     alto = 1
-    if largo > 3:
+    """if largo > 3:
         alto = largo % 3
         largo = 3
-
+"""
     figura, ejes = plt.subplots(alto, largo, figsize=(10, 4))
-    figura.suptitle("Imagenes RGB")
+    figura.suptitle("Imagenes")
     if ejes.ndim == 1:
         for i, imagen in enumerate(imagenes):
             ejes[i].imshow(cv.cvtColor(imagen, cv.COLOR_BGR2RGB))
@@ -200,3 +200,6 @@ def mostrar_varios_rgb(*imagenes: np.ndarray):
         for i, imagen in enumerate(imagenes):
             ejes[i // largo, i % largo].imshow(cv.cvtColor(imagen, cv.COLOR_BGR2RGB))
     plt.show()
+
+
+
