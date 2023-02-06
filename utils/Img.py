@@ -139,6 +139,7 @@ def normalizar_entre_01(img):
     # plt.imshow(nrm*255, cmap="gray", vmin = 0, vmax=255)
     return normalizado
 
+
 def mostar_histograma(image: np.ndarray):
     figura, ejes = plt.subplots(1, 3, figsize=(10, 4))
     figura.suptitle("Histogramas RBG")
@@ -165,3 +166,37 @@ def histograma_equalized(image: np.ndarray):
         ejes[i].plot(histograma, color=color)
     plt.show()
     return equalizadas[0], equalizadas[1], equalizadas[2]
+
+
+def suavizar(image):
+    kernel = (1 / 4) * np.array([[0, 1, 0],
+                                 [1, 0, 1],
+                                 [0, 1, 0]])
+    todos_los_canales = -1
+    return cv.filter2D(src=image, ddepth=todos_los_canales, kernel=kernel)
+
+
+def realzar(image):
+    kernel = np.array([[0, -1, 0],
+                       [-1, 5, -1],
+                       [0, -1, 0]])
+    todos_los_canales = -1
+    return cv.filter2D(src=image, ddepth=todos_los_canales, kernel=kernel)
+
+
+def mostrar_varios_rgb(*imagenes: np.ndarray):
+    largo = len(imagenes)
+    alto = 1
+    if largo > 3:
+        alto = largo % 3
+        largo = 3
+
+    figura, ejes = plt.subplots(alto, largo, figsize=(10, 4))
+    figura.suptitle("Imagenes RGB")
+    if ejes.ndim == 1:
+        for i, imagen in enumerate(imagenes):
+            ejes[i].imshow(cv.cvtColor(imagen, cv.COLOR_BGR2RGB))
+    else:
+        for i, imagen in enumerate(imagenes):
+            ejes[i // largo, i % largo].imshow(cv.cvtColor(imagen, cv.COLOR_BGR2RGB))
+    plt.show()
