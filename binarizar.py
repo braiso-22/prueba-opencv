@@ -46,6 +46,8 @@ def binarizar2(image):
 
     # Displaying the grid
     plt.show()
+
+
 def main():
     image = Img.cargar_imagen("img/diagonal_negra.png")
     binarizar(image)

@@ -70,7 +70,7 @@ def ver_todos_los_grises(img):
     l, u, v = separar_luv(img)
 
 
-def restar_imagenes(img, img2):
+def restar_imagenes(img, img2, mostrar=False):
     """
     Resta con saturación
     :param img:
@@ -78,13 +78,15 @@ def restar_imagenes(img, img2):
     :return:
     """
     resta = cv.subtract(img, img2)
-    mostrar(resta, gris=True)
+    if mostrar:
+        mostrar(resta, gris=True)
     return resta
 
 
-def sumar_imagenes(img, img2):
+def sumar_imagenes(img, img2, mostrar=False):
     suma = cv.add(img, img2)
-    mostrar(suma, gris=True)
+    if mostrar:
+        mostrar(suma, gris=True)
     return suma
 
 
@@ -128,6 +130,12 @@ def mostrar_rgb(img):
 def binarizar(img, media):
     img[img < media] = 0
     img[img >= media] = 255
+    return img
+
+
+def binarizar_inv(img, media):
+    img[img < media] = 255
+    img[img >= media] = 0
     return img
 
 
@@ -200,6 +208,3 @@ def mostrar_varios_rgb(*imagenes: np.ndarray):
         for i, imagen in enumerate(imagenes):
             ejes[i // largo, i % largo].imshow(cv.cvtColor(imagen, cv.COLOR_BGR2RGB))
     plt.show()
-
-
-
