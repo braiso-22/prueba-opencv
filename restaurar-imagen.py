@@ -10,7 +10,7 @@ def pintar_fondo_en_mascara(image: np.ndarray, mask: np.ndarray):
     not_mask = cv.bitwise_not(mask)
 
     image_con_agujeros = cv.bitwise_and(copia, not_mask)
-    for i in range(3):
+    for i in range(4):
         # image_blur = cv.GaussianBlur(copia, (9, 9), sigmaX=0, sigmaY=0)
         filtro1 = np.ones((7, 7))
         filtro1[2:5, 2:5] = np.zeros((3, 3))
@@ -22,17 +22,27 @@ def pintar_fondo_en_mascara(image: np.ndarray, mask: np.ndarray):
 
         copia = Img.sumar_imagenes(image_con_agujeros, letras_difuminadas)
 
-    final_mask = cv.bitwise_and(copia, mask)
-    return final_mask
+    blurry_mask = cv.bitwise_and(copia, mask)
+    return blurry_mask
 
 
 def eliminar_mascara(image: np.ndarray, mask: np.ndarray):
     final_mask = pintar_fondo_en_mascara(image, mask)
+    Img.mostrar(final_mask)
     copia_mask1 = copy.deepcopy(final_mask)
     final_mask1 = cv.bitwise_xor(final_mask, Img.binarizar(copia_mask1, 200))
+    result2 = cv.bitwise_xor(image, final_mask1)
+    result1 = image + final_mask1
 
-    result = cv.bitwise_xor(image, final_mask1)
-    return result
+    mascara_binarizada = Img.binarizar(result2.copy(), 190)
+
+    result2 = cv.bitwise_and(result2, mascara_binarizada)
+    result1 = cv.bitwise_and(result1, cv.bitwise_not(mascara_binarizada))
+
+    suma = cv.bitwise_or(result1, result2)
+
+    final_result = cv.bilateralFilter(suma, d=2, sigmaColor=25, sigmaSpace=25)
+    return final_result
 
 
 def main():
