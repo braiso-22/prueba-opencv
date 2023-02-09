@@ -27,28 +27,31 @@ def show_3_gray(one, two, three):
     plt.show()
 
 
-def separar_rgb(image):
+def separar_rgb(image, mostrar_var=False):
     red, green, blue = cv.split(image)
     # separar colores
-    show_3_gray(red, green, blue)
+    if mostrar_var:
+        show_3_gray(red, green, blue)
     return red, green, blue
 
 
-def separar_hsv(image):
+def separar_hsv(image,mostrar_var=False):
     src = cv.cvtColor(image, cv.COLOR_RGB2HSV)
     h = src[:, :, 0]
     s = src[:, :, 1]
     v = src[:, :, 2]
-    show_3_gray(h, s, v)
+    if mostrar_var:
+        show_3_gray(h, s, v)
     return h, s, v
 
 
-def separar_luv(image):
+def separar_luv(image, mostrar_var=False):
     src = cv.cvtColor(image, cv.COLOR_BGR2Luv)
     h = src[:, :, 0]
     s = src[:, :, 1]
     v = src[:, :, 2]
-    show_3_gray(h, s, v)
+    if mostrar_var:
+        show_3_gray(h, s, v)
     return h, s, v
     src
 
