@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import cv2 as cv
 
 
-def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1', mostrar=False):
+def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1', mostrar=False) -> np.ndarray:
     src = cv.imread(route)
     if mostrar:
         cv.namedWindow(window_name, cv.WINDOW_AUTOSIZE)
@@ -35,7 +35,7 @@ def separar_rgb(image, mostrar_var=False):
     return red, green, blue
 
 
-def separar_hsv(image,mostrar_var=False):
+def separar_hsv(image, mostrar_var=False):
     src = cv.cvtColor(image, cv.COLOR_RGB2HSV)
     h = src[:, :, 0]
     s = src[:, :, 1]
