@@ -68,9 +68,9 @@ def escala_grises(img, mostrar_var=False):
 
 
 def ver_todos_los_grises(img):
-    r, g, b = separar_rgb(img)
-    h, s, v = separar_hsv(img)
-    l, u, v = separar_luv(img)
+    r, g, b = separar_rgb(img, mostrar_var=True)
+    h, s, v = separar_hsv(img, mostrar_var=True)
+    l, u, v = separar_luv(img, mostrar_var=True)
 
 
 def restar_imagenes(img, img2, mostrar=False):
