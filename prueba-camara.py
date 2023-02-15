@@ -6,6 +6,8 @@ import numpy as np
 def obtener_frame(capturadora: cv.VideoCapture):
     ret, frame = capturadora.read()
     if not ret:
+        capturadora.release()
+        cv.destroyAllWindows()
         exit(0)
 
     frame = cv.flip(frame, 1)
@@ -32,8 +34,12 @@ def mostrar_frame(frame: np.ndarray, accion: int):
         return -1
 
 
-def main():
-    captura_video = cv.VideoCapture(1, cv.CAP_DSHOW)
+def main(video_mode: str):
+    if video_mode == "video":
+        captura_video = cv.VideoCapture("img/mario_dancing.mp4")
+    else:
+        captura_video = cv.VideoCapture(1, cv.CAP_DSHOW)
+
     accion = 1
     while True:
         frame = obtener_frame(captura_video)
@@ -56,4 +62,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    video_or_cam = input("Escribe video para cargar un video o cualquier otra cosa para usar la webcam: ")
+    main(video_or_cam)
