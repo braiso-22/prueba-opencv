@@ -39,3 +39,25 @@ def pintar_borde_cara(frame: np.ndarray):
         for face_location in face_locations:
             top, right, bottom, left = face_location
             cv.rectangle(frame, (left, top), (right, bottom), (50, 200, 50), 2)
+
+
+def get_camera():
+    return cv.VideoCapture(1, cv.CAP_DSHOW)
+
+
+def video_capture(operacion):
+    captura_video = get_camera()
+    cv.namedWindow("Video")
+    accion = 1
+    while True:
+        frame = obtener_frame(captura_video)
+        # funcion que se le pasa como parametro
+        frame = operacion(frame)
+
+        accion = mostrar_frame(frame, accion)
+        if accion == -1:
+            break
+        if accion == 0:
+            accion = 0
+        else:
+            accion = 1
