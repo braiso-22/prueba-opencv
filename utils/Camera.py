@@ -45,15 +45,22 @@ def get_camera():
     return cv.VideoCapture(1, cv.CAP_DSHOW)
 
 
-def video_capture(operacion):
+def video_capture(operacion=None, mouse_callback=None):
     captura_video = get_camera()
     cv.namedWindow("Video")
     accion = 1
+    first_frame = True
     while True:
         frame = obtener_frame(captura_video)
+        if first_frame:
+            first_frame = False
+            mascara = np.zeros(frame.shape, dtype=np.uint8)
         # funcion que se le pasa como parametro
-        frame = operacion(frame)
+        if operacion:
+            frame = operacion(frame)
+        if mouse_callback:
 
+            cv.setMouseCallback("Video", mouse_callback, param=frame)
         accion = mostrar_frame(frame, accion)
         if accion == -1:
             break
