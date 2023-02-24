@@ -2,7 +2,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 import cv2 as cv
 
-
+ROJO = (0, 0, 255)
+VERDE = (0, 255, 0)
+AZUL = (255, 0, 0)
+TRANSPARENTE = (0, 0, 0, 0)
 def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1', mostrar=False) -> np.ndarray:
     src = cv.imread(route)
     if mostrar:
