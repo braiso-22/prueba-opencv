@@ -56,21 +56,14 @@ def main():
                     if M["m00"] != 0:
                         x = int(M["m10"] / M["m00"])
                         y = int(M["m01"] / M["m00"])
-                        if ((centro_circulos[0][0] + 25) > x > (centro_circulos[0][0] - 25)) and (
-                                (centro_circulos[0][1] + 25) > y > (centro_circulos[0][1] - 25)):
-                            color_actual = 0
-                        elif ((centro_circulos[1][0] + 25) > x > (centro_circulos[1][0] - 25)) and (
-                                (centro_circulos[1][1] + 25) > y > (centro_circulos[1][1] - 25)):
-                            color_actual = 1
-                        elif ((centro_circulos[2][0] + 25) > x > (centro_circulos[2][0] - 25)) and (
-                                (centro_circulos[2][1] + 25) > y > (centro_circulos[2][1] - 25)):
-                            color_actual = 2
-                        else:
-                            color_actual = -1
-
+                        for i, cc in enumerate(centro_circulos):
+                            if abs(cc[0] - x) + abs(cc[1] - y) < 30:
+                                color_actual = i
+                                break
                         lista_puntos.append((x, y, color_actual))
                         cv.circle(img_bgr, (x, y), 7, (255, 255, 255), -1)
-                        cv.putText(img_bgr, "centro"+f"x{x},y{y}", (x - 20, y - 20), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                        cv.putText(img_bgr, "centro" + f"x{x},y{y}", (x - 20, y - 20), cv.FONT_HERSHEY_SIMPLEX, 0.5,
+                                   (0, 0, 255), 2)
             cv.imshow("mascara", mascara)
 
             for punto in lista_puntos:
