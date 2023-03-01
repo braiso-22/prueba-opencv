@@ -85,9 +85,20 @@ class Juego:
             cv.putText(
                 image,
                 f"{self.resultado_jugada(self.jugada_jugador)}",
-                (50, 150),
+                (50, 100),
                 cv.FONT_HERSHEY_SIMPLEX,
                 0.7,
+                (255, 255, 255),
+                2,
+                cv.LINE_AA
+            )
+            string_a_mostrar = "Pulgar arriba para continuar"
+            cv.putText(
+                image,
+                string_a_mostrar,
+                (50, 150),
+                cv.FONT_HERSHEY_SIMPLEX,
+                0.5,
                 (255, 255, 255),
                 2,
                 cv.LINE_AA
@@ -105,7 +116,6 @@ class Juego:
                 2,
                 cv.LINE_AA
             )
-        pass
 
     def cambiar_estado_juego(self, posicion_actual):
         if self.estado == 0:
@@ -113,9 +123,11 @@ class Juego:
         elif self.estado == 1:
             if posicion_actual == "ok" and is_valid_movement(self.jugada_jugador):
                 self.estado = 2
-            self.jugada_jugador = posicion_actual
+            else:
+                self.jugada_jugador = posicion_actual
         elif self.estado == 2:
-            self.estado = 3
+            if posicion_actual == "ok":
+                self.estado = 3
         elif self.estado == 3:
             if posicion_actual == "ok":
                 self.estado = 1
@@ -191,7 +203,7 @@ def procesar_frame(image, hands, mp_drawing, mp_hands, modelo, nombres_posicione
             posicion_actual = translate_posicion(posicion_actual)
         image = cv.flip(image, 1)
         juego.mostrar_menu_actual(image)
-        if num_frames % 40 == 0:
+        if num_frames % 35 == 0:
             juego.cambiar_estado_juego(posicion_actual)
     else:
         image = cv.flip(image, 1)
