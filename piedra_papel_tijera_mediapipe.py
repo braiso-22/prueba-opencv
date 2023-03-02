@@ -197,14 +197,13 @@ def procesar_frame(image, hands, mp_drawing, mp_hands, modelo, nombres_posicione
                 hand_landmarks,
                 mp_hands.HAND_CONNECTIONS
             )
-            posicion_actual = predecir_posicion_mano(modelo, landmarks_in_screen, nombres_posiciones)
-
-        if translate_posicion(posicion_actual) != "":
-            posicion_actual = translate_posicion(posicion_actual)
+            posicion_sin_traducir = predecir_posicion_mano(modelo, landmarks_in_screen, nombres_posiciones)
+            posicion_actual = translate_posicion(posicion_sin_traducir)
         image = cv.flip(image, 1)
         juego.mostrar_menu_actual(image)
-        if num_frames % 35 == 0:
+        if num_frames % 30 == 0:
             juego.cambiar_estado_juego(posicion_actual)
+
     else:
         image = cv.flip(image, 1)
 
