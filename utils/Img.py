@@ -6,6 +6,8 @@ ROJO = (0, 0, 255)
 VERDE = (0, 255, 0)
 AZUL = (255, 0, 0)
 TRANSPARENTE = (0, 0, 0, 0)
+
+
 def cargar_imagen(route: str = 'img/kong.jpg', window_name: str = 'prueba1', mostrar=False) -> np.ndarray:
     src = cv.imread(route)
     if mostrar:
@@ -214,3 +216,16 @@ def mostrar_varios_rgb(*imagenes: np.ndarray):
         for i, imagen in enumerate(imagenes):
             ejes[i // largo, i % largo].imshow(cv.cvtColor(imagen, cv.COLOR_BGR2RGB))
     plt.show()
+
+
+def escribir(image, pos, size, text):
+    cv.putText(
+        image,
+        text,
+        pos,
+        cv.FONT_HERSHEY_SIMPLEX,
+        0.15 * size,
+        (255, 255, 255),
+        2,
+        cv.LINE_AA
+    )
