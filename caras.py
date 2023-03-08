@@ -35,7 +35,7 @@ def pintar_bordes(image: np.ndarray, bordes: np.ndarray, color: tuple = (10, 255
     return copy
 
 
-def detectar_cosas(image):
+def detectar_cosas(image, params=None):
     caras = detectar_caras(image)
     ojos = detectar_ojos(image)
     sonrisas = detectar_bocas(image)
@@ -67,6 +67,7 @@ def detectar_cosas(image):
 
 def main():
     image = Img.cargar_imagen("img/suaves-foto.jpg")
+    # Camera.video_capture(detectar_cosas)
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     image = detectar_cosas(image)
     Img.mostrar(image)
