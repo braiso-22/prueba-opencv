@@ -36,11 +36,11 @@ def bordes(image):
 
 
 def main():
-    image = Img.cargar_imagen("img/chica.png")
+    image = Img.cargar_imagen("../img/chica.png")
     difuminaciones(image)
     realzados(image)
 
-    cristalera = Img.cargar_imagen("img/cristalera.jpg")
+    cristalera = Img.cargar_imagen("../img/cristalera.jpg")
     bordes(cristalera)
 
 

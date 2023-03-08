@@ -4,7 +4,7 @@ import numpy as np
 
 
 def main():
-    image = Img.cargar_imagen("img/monedas.png")
+    image = Img.cargar_imagen("../img/monedas.png")
 
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     image = image[90:850, 300:1200]

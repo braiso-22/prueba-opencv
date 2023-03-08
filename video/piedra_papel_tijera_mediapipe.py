@@ -215,11 +215,11 @@ def capturar_video_mano():
     mp_hands = mp.solutions.hands
     cap = cv.VideoCapture(0)
     modelo = cargar_modelo(
-        "./models/hands/mp_hand_gesture"
+        "../models/hands/mp_hand_gesture"
     )
 
     # open file
-    with open("./models/hands/gesture.names", "r") as f:
+    with open("../models/hands/gesture.names", "r") as f:
         nombres_posiciones = f.read().splitlines()
 
     with mp_hands.Hands(

@@ -5,10 +5,10 @@ from utils import Img
 
 
 def mostrar_imagenes():
-    imagen = Img.cargar_imagen("img/banda_vacia.png")
-    imagen1 = Img.cargar_imagen("img/banda_caja1.png")
-    imagen2 = Img.cargar_imagen("img/banda_caja1_5.png")
-    imagen3 = Img.cargar_imagen("img/banda_caja2.png")
+    imagen = Img.cargar_imagen("../img/banda_vacia.png")
+    imagen1 = Img.cargar_imagen("../img/banda_caja1.png")
+    imagen2 = Img.cargar_imagen("../img/banda_caja1_5.png")
+    imagen3 = Img.cargar_imagen("../img/banda_caja2.png")
     # Img.ver_todos_los_grises(imagen1)
     img = Img.escala_grises(imagen)
     img1 = Img.escala_grises(imagen1)

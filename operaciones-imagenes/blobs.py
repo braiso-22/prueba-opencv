@@ -59,7 +59,7 @@ def blobs(image: np.ndarray):
 
 
 def main():
-    image = Img.cargar_imagen("img/granos.jpg")
+    image = Img.cargar_imagen("../img/granos.jpg")
     blobs(image)
 
 

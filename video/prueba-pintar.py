@@ -13,7 +13,7 @@ def pintar_en_fondo_negro():
 
 
 def pintar_en_la_j():
-    j = Img.cargar_imagen("img/j0.png")
+    j = Img.cargar_imagen("../img/j0.png")
 
     kernel = np.ones((5, 5), np.uint8)
 
@@ -29,7 +29,7 @@ def pintar_en_la_j():
 
 def limpiar_fondo_j():
     kernel = np.ones((5, 5), np.uint8)
-    j_sucia = Img.cargar_imagen("img/j1.png")
+    j_sucia = Img.cargar_imagen("../img/j1.png")
     j_fina = cv.erode(j_sucia, kernel, iterations=1)
     j_limpia = cv.dilate(j_fina, kernel, iterations=1)
     Img.mostrar_varios_rgb(j_sucia, j_limpia)
@@ -37,7 +37,7 @@ def limpiar_fondo_j():
 
 def limpiar_j_sucia():
     kernel = np.ones((5, 5), np.uint8)
-    j_sucia = Img.cargar_imagen("img/j2.png")
+    j_sucia = Img.cargar_imagen("../img/j2.png")
     j_gorda = cv.dilate(j_sucia, kernel, iterations=1)
     j_limpia = cv.erode(j_gorda, kernel, iterations=1)
     Img.mostrar_varios_rgb(j_sucia, j_limpia)
@@ -45,7 +45,7 @@ def limpiar_j_sucia():
 
 def limpiar_letras():
     kernel = np.ones((5, 5), np.uint8)
-    letras = Img.cargar_imagen("img/letras.png")
+    letras = Img.cargar_imagen("../img/letras.png")
     letras_cerrar = cv.morphologyEx(letras, cv.MORPH_CLOSE, kernel, iterations=4)
     letras_abrir = cv.morphologyEx(letras_cerrar, cv.MORPH_OPEN, kernel, iterations=3)
 

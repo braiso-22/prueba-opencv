@@ -36,7 +36,7 @@ def mostrar_frame(frame: np.ndarray, accion: int):
 
 def main(video_mode: str):
     if video_mode == "video":
-        captura_video = cv.VideoCapture("img/mario_dancing.mp4")
+        captura_video = cv.VideoCapture("../img/mario_dancing.mp4")
     else:
         captura_video = cv.VideoCapture(1, cv.CAP_DSHOW)
 

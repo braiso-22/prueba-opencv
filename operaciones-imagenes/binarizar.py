@@ -49,9 +49,9 @@ def binarizar2(image):
 
 
 def main():
-    image = Img.cargar_imagen("img/diagonal_negra.png")
+    image = Img.cargar_imagen("../img/diagonal_negra.png")
     binarizar(image)
-    image2 = Img.cargar_imagen("img/sudoku.png")
+    image2 = Img.cargar_imagen("../img/sudoku.png")
     binarizar2(image2)
     pass
 

@@ -3,7 +3,7 @@ import cv2 as cv
 
 
 def main():
-    image = Img.cargar_imagen("img/chica.png")
+    image = Img.cargar_imagen("../img/chica.png")
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     Img.separar_rgb(image)
 

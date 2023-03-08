@@ -66,7 +66,7 @@ def detectar_cosas(image, params=None):
 
 
 def main():
-    image = Img.cargar_imagen("img/suaves-foto.jpg")
+    image = Img.cargar_imagen("../img/suaves-foto.jpg")
     # Camera.video_capture(detectar_cosas)
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     image = detectar_cosas(image)

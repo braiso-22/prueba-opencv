@@ -28,7 +28,7 @@ def pintar_bordes_matricula(img: np.ndarray, mascara_threshold):
 
 
 def main():
-    matricula = Img.cargar_imagen("img/matricula.jpg")
+    matricula = Img.cargar_imagen("../img/matricula.jpg")
     mascara = obtener_mascara_matricula(matricula)
     pintar_bordes_matricula(matricula, mascara)
     Img.mostrar(matricula, gris=True)

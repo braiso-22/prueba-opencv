@@ -92,17 +92,17 @@ def ver_media_desviacion(img):
 
 
 def main():
-    rectangulo = Img.cargar_imagen("img/test5.png")
-    circulo = Img.cargar_imagen("img/test6.png")
-    chica = Img.cargar_imagen("img/chica.png")
+    rectangulo = Img.cargar_imagen("../img/test5.png")
+    circulo = Img.cargar_imagen("../img/test6.png")
+    chica = Img.cargar_imagen("../img/chica.png")
     operaciones_bits_2_images(circulo, rectangulo)
     operaciones_bits_2_images(chica, circulo)
     Img.ver_cambios_entre(
-        Img.cargar_imagen("img/banda_caja1.png"),
-        Img.cargar_imagen("img/banda_caja2.png")
+        Img.cargar_imagen("../img/banda_caja1.png"),
+        Img.cargar_imagen("../img/banda_caja2.png")
     )
     pintar(chica)
-    chica = Img.cargar_imagen("img/chica.png")
+    chica = Img.cargar_imagen("../img/chica.png")
     ver_propiedades_minmax(chica)
     media, _ = ver_media_desviacion(chica)
     chica_gris = Img.escala_grises(chica)

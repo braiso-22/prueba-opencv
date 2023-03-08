@@ -28,7 +28,7 @@ def detectar_lineas(image):
 
 
 def main():
-    image = Img.cargar_imagen("img/carretera.jpg")
+    image = Img.cargar_imagen("../img/carretera.jpg")
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     Img.mostrar(image)
     detectar_lineas(image)

@@ -148,7 +148,7 @@ def pintar_sobre_monedas(image: np.ndarray, contornos: list) -> np.ndarray:
 
 
 def main():
-    image = Img.cargar_imagen("img/monedas.png")
+    image = Img.cargar_imagen("../img/monedas.png")
     mascara_monedas = obtener_mascara_monedas(image)
     canny = obtener_canny(mascara_monedas)
 
